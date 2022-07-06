@@ -19,7 +19,6 @@ import astropy.io.ascii as at
 
 star_name = "IC2391b084426-5242_20190522"
 location =  "Google Drive/Shared drives/DouglasGroup/data/Zorro_data_reformatted/"
-#expanded_location = os.path.expanduser(location)
 location_and_name = os.path.join(os.path.expanduser(f"~/{location}"), star_name)
 fname1=f"{location_and_name}_562_raw.dat"
 fname2=f"{location_and_name}_832_raw.dat"
@@ -29,14 +28,14 @@ filter1 = fname1.split('_')[-2]
 filter2 = fname2.split('_')[-2]
 dat1 = at.read(edited_fname1)
 dat2 = at.read(edited_fname2)
-
+#defining which files to draw data from for the plot
 
 plt.plot(dat1['ann_center'], dat1['delta_mag_limit'], 'k', label=f'{filter1} nm')
 plt.plot(dat2['ann_center'], dat2['delta_mag_limit'], 'r', label=f'{filter2} nm')
 plt.xlabel('Separation [arcsec]')
 plt.ylabel('Delta Mag')
 plt.legend()
-
+#creating plot using two parameters
 
 
 finder = glob.glob(f'../{location}/{star_name}*raw.dat')
