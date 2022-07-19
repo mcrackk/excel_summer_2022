@@ -1,13 +1,23 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Jul 18 11:12:26 2022
+
+@author: kiramccracken
+"""
 import glob
 import os
 import numpy as np
 import matplotlib.pyplot as plt
 import astropy.io.ascii as at
 
+
+
 def starplot(star_name):
     location =  "Google Drive/Shared drives/DouglasGroup/data/Zorro_data_reformatted/"
-    expanded_location = os.path.expanduser(location)
+    #expanded_location = os.path.expanduser(location)
     location_and_name = os.path.join(os.path.expanduser(f"~/{location}"), star_name)
+    #print(location_and_name)
     fname1=f"{location_and_name}_562_raw.dat"
     fname2=f"{location_and_name}_832_raw.dat"
     edited_fname1 = os.path.expanduser(fname1)
@@ -24,18 +34,14 @@ def starplot(star_name):
     plt.xlabel('Separation [arcsec]')
     plt.ylabel('Delta Mag')
     plt.legend()
-    plt.show()
     #creating plot
-    ###############################################################
-    finder = glob.glob(f'../{location}/{star_name}*raw.dat')#review location
+    
+    finder = glob.glob(f'{location_and_name}*raw.dat')
     print(finder)
 
-    fname1 = finder[0]
-    fname2 = finder[1]
+
 
 
 if __name__== "__main__":
     star_name = "IC2391b084426-5242_20190522"
     starplot(star_name)
-
-
