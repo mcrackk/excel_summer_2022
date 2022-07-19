@@ -15,31 +15,28 @@ import astropy.io.ascii as at
 
 def starplot(star_name):
     location =  "Google Drive/Shared drives/DouglasGroup/data/Zorro_data_reformatted/"
-    #expanded_location = os.path.expanduser(location)
     location_and_name = os.path.join(os.path.expanduser(f"~/{location}"), star_name)
-    #print(location_and_name)
-    fname1=f"{location_and_name}_562_raw.dat"
-    fname2=f"{location_and_name}_832_raw.dat"
+    finder = glob.glob(f'{location_and_name}*raw.dat')
+    fname1= finder[0]
+    fname2= finder[1]
     edited_fname1 = os.path.expanduser(fname1)
     edited_fname2 = os.path.expanduser(fname2)
-    filter1 = fname1.split('_')[-2]
-    filter2 = fname2.split('_')[-2]
+    #filter1 = fname1.split('_')[-2]
+    #filter2 = fname2.split('_')[-2]
+    ####So now you have to make sure you can pull the filter numbers so that you can use them below and 
+    ####make the legend in lines 33, 34 and 37
     dat1 = at.read(edited_fname1)
     dat2 = at.read(edited_fname2)
 
     #gathering all information necessary to plot data
 
-    plt.plot(dat1['ann_center'], dat1['delta_mag_limit'], 'k', label=f'{filter1} nm')
-    plt.plot(dat2['ann_center'], dat2['delta_mag_limit'], 'r', label=f'{filter2} nm')
+    plt.plot(dat1['ann_center'], dat1['delta_mag_limit'], 'k')#, label=f'{filter1} nm')
+    plt.plot(dat2['ann_center'], dat2['delta_mag_limit'], 'r')#, label=f'{filter2} nm')
     plt.xlabel('Separation [arcsec]')
     plt.ylabel('Delta Mag')
-    plt.legend()
-    #creating plot
+   #plt.legend()
     
-    finder = glob.glob(f'{location_and_name}*raw.dat')
-    print(finder)
-
-
+    
 
 
 if __name__== "__main__":
