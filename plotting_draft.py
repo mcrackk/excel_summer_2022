@@ -21,8 +21,9 @@ def starplot(star_name):
     fname2= finder[1]
     edited_fname1 = os.path.expanduser(fname1)
     edited_fname2 = os.path.expanduser(fname2)
-    #filter1 = fname1.split('_')[-2]
-    #filter2 = fname2.split('_')[-2]
+    filter1 = fname1.split('_')[-2]
+    filter2 = fname2.split('_')[-2]
+    print(filter2)
     ####So now you have to make sure you can pull the filter numbers so that you can use them below and 
     ####make the legend in lines 33, 34 and 37
     dat1 = at.read(edited_fname1)
@@ -30,11 +31,11 @@ def starplot(star_name):
 
     #gathering all information necessary to plot data
 
-    plt.plot(dat1['ann_center'], dat1['delta_mag_limit'], 'k')#, label=f'{filter1} nm')
-    plt.plot(dat2['ann_center'], dat2['delta_mag_limit'], 'r')#, label=f'{filter2} nm')
+    plt.plot(dat1['ann_center'], dat1['delta_mag_limit'], 'k', label=f'{filter1} nm')
+    plt.plot(dat2['ann_center'], dat2['delta_mag_limit'], 'r', label=f'{filter2} nm')
     plt.xlabel('Separation [arcsec]')
     plt.ylabel('Delta Mag')
-   #plt.legend()
+    plt.legend()
     
     
 
