@@ -18,12 +18,9 @@ def starplot(star_name):
     location =  "Google Drive/Shared drives/DouglasGroup/data/Zorro_data_reformatted/"
     location_and_name = os.path.join(os.path.expanduser(f"~/{location}"), star_name)
     finder = glob.glob(f'{location_and_name}*raw.dat')
-    print(finder)
     for i, star_name in enumerate(finder):
         if star_name.endswith('raw.dat'):
             fname = finder[i]
-            #print(finder)
-            #print(finder[i])
             edited_fname = os.path.expanduser(fname)
             filter_ = fname.split('_')[-2]  
             dat = at.read(edited_fname)
