@@ -26,11 +26,11 @@ def starplot(star_name):
             dat = at.read(edited_fname)
     
             #gathering all information necessary to plot data
-    
-            plt.plot(dat['ann_center'], dat['delta_mag_limit'], label=f'{filter_} nm')
-    plt.xlabel('Separation [arcsec]')
-    plt.ylabel('Delta Mag')
-    plt.legend()
+            ax = plt.subplot()
+            ax.plot(dat['ann_center'], dat['delta_mag_limit'], label=f'{filter_} nm')
+    ax.set_xlabel('Separation [arcsec]')
+    ax.set_ylabel('Delta Mag')
+    ax.legend()
   
             
             
@@ -38,5 +38,5 @@ def starplot(star_name):
 
 
 if __name__== "__main__":
-    star_name = "IC2391b084426-5242_"
+    star_name = "IC2391m084157-5252_"
     starplot(star_name)
