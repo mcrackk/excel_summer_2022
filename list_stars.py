@@ -6,14 +6,6 @@ Created on Wed Jul 27 14:04:05 2022
 @author: kiramccracken
 """
 
-#imports!!!
-#glob to get list of all of raw files
-#create empty list that will hold star names
-#loop over all files
-#split file name to extract star name only
-#append star name to list if not already there
-
-#write all names to new file
 
 import glob
 import os
