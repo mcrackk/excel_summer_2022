@@ -17,6 +17,8 @@ import glob
     
 star_name = "IC2602b104422-6415" 
 
+#multiply separation column by 1000 cuz milliarcseconds 
+
 
         
 def one_star_table(star_name):
@@ -27,12 +29,14 @@ def one_star_table(star_name):
         if file_star_name.endswith('.dat'):
             edited_fname = os.path.expanduser(file_star_name)
             dat = at.read(edited_fname)
-            data_table = Table(data = [dat['ann_center'], dat['delta_mag_limit']], names=["Separation", "Delta Mag"])
+            dat['ann_center'] = dat['ann_center']*1000
+            data_table = Table(data = [dat['ann_center'], dat['delta_mag_limit']], names=["Sep", "Contrast"])
+            
             print(data_table)
             MOLUSC_fname = edited_fname.replace(".dat", "MOLUSC.dat")
             new_pathname = MOLUSC_fname.replace('Zorro_data_reformatted', 'Zorro_to_MOLUSC')
             at.write(data_table, new_pathname, overwrite = True)
-        
+                
 
 star_names = at.read("all_zorro_targets.csv")
 
