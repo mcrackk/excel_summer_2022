@@ -13,7 +13,8 @@ import matplotlib.pyplot as plt
 import astropy.io.ascii as at
 
 ssfont = {'fontname':'sans-serif'}
-color_dict = {'562': '#dede00', '832': '#e41a1c', '466': '#377eb8', '716': '#f781bf' }
+color_dict = {'562': '#984ea3', '832': '#e41a1c', '466': '#999999', '716': '#f781bf' }
+
 def starplot(star_name, ax):
     location =  "Google Drive/Shared drives/DouglasGroup/data/Zorro_data_reformatted/"
     location_and_name = os.path.join(os.path.expanduser(f"~/{location}"), star_name)
@@ -38,4 +39,4 @@ def one_star(star_name):
     starplot(star_name, ax)
     ax.legend()    
 
-one_star("IC2602b104256-6355")
+one_star("IC2391b084426-5242")
