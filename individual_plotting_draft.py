@@ -24,7 +24,11 @@ def starplot(star_name, ax):
             fname = finder[i]
             edited_fname = os.path.expanduser(fname)
             filter_num = fname.split('_')[-2]  
-            dat = at.read(edited_fname)
+            if (float(filter_num) > 700):
+                edited_fname_red = edited_fname
+            else:
+                continue
+            dat = at.read(edited_fname_red)
             #gathering all information necessary to plot data
             
             ax.plot(dat['ann_center'], dat['delta_mag_limit'], label=f'{filter_num} nm', 
@@ -35,8 +39,10 @@ def one_star(star_name):
     ax = plt.subplot()
     ax.set_xlabel('Separation [arcsec]', **ssfont)
     ax.set_ylabel('Delta Mag', **ssfont)
+    ax.set_ylim(10, -0.5)
     ax.set_title(star_name, **ssfont)
     starplot(star_name, ax)
+    #ax.plot()  plot the individual point here !!!!
     ax.legend()    
 
 one_star("IC2391b084426-5242")

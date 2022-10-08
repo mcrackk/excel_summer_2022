@@ -13,13 +13,13 @@ import matplotlib.pyplot as plt
 import astropy.io.ascii as at
 
 
-color_dict = {'562': '#dede00', '832': '#e41a1c', '466': '#377eb8', '716': '#f781bf' }
+color_dict = {'562': '#984ea3', '832': '#e41a1c', '466': '#999999', '716': '#f781bf'}
 def starplot(star_name, ax):
     location =  "Google Drive/Shared drives/DouglasGroup/data/Zorro_data_reformatted/"
     location_and_name = os.path.join(os.path.expanduser(f"~/{location}"), star_name)
-    finder = glob.glob(f'{location_and_name}*raw.dat') 
+    finder = glob.glob(f'{location_and_name}*fit.dat') 
     for i, file_star_name in enumerate(finder):
-        if file_star_name.endswith('raw.dat'):
+        if file_star_name.endswith('fit.dat'):
             fname = finder[i]
             edited_fname = os.path.expanduser(fname)
             filter_num = fname.split('_')[-2]  
@@ -33,6 +33,7 @@ def starplot(star_name, ax):
 def one_star(star_name):
     ax = plt.subplot()
     ax.set_xlabel('Separation [arcsec]')
+    ax.invert_yaxis()
     ax.set_ylabel('Delta Mag')
     ax.set_title(star_name)
     starplot(star_name, ax)
@@ -42,6 +43,9 @@ def one_star(star_name):
 def all_star_plot(star_names):
     ax = plt.subplot()
     ax.set_xlabel('Separation [arcsec]')
+    #ax.set_ylim(top=10)
+    #ax.invert_yaxis()
+    ax.set_ylim(10, -0.5)
     ax.set_ylabel('Delta Mag')
     ax.set_title("All Zorro Targets")
     filter_nums = [832, 716, 562, 466]
@@ -53,11 +57,6 @@ def all_star_plot(star_names):
           print(star_name)
           starplot(star_name, ax)
     plt.savefig("all_zorro_targets_pyplot")   
-# save plot with with useful name (make note in lab motebook refer to script and location), remake same plot but with fitted curves
-# put filter curves into MOLUSC format (in a new .py file!!!)
-#       create a new table for each star with the specified format and write out to files   
-#       create unique file name for each star 
-#       start with one star and build it up to genealize it (use at.read and at.write)
 
 
 if __name__== "__main__":
