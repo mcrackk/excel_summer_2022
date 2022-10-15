@@ -45,4 +45,4 @@ def one_star(star_name):
     #ax.plot()  plot the individual point here !!!!
     ax.legend()    
 
-one_star("IC2391b084426-5242")
+one_star("IC2602b104256-6355")

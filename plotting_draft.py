@@ -67,4 +67,33 @@ if __name__== "__main__":
 
     star_names = at.read("all_zorro_targets.csv")
     all_star_plot(star_names['name'])
+
+binary_location = "Google Drive/Shared drives/DouglasGroup/data/Zorro_speckle_info/Douglas_Binaries_GS_all.txt"
+binary_location_expanded = os.path.join(os.path.expanduser(f"~/{binary_location}"))
+
+
+
+def binary_detections(all_names):
+    ssfont = {'fontname':'sans-serif'}
+    color_dict = {'purple 1': '#984ea3', 'red': '#e41a1c', 'grey': '#999999', 'pink': '#f781bf' }
+
     
+    #on same plot with the curves 
+    #for confirmed_pair in binary_location_expanded:
+    #for name in binary_location_expanded:
+    data = at.read(binary_location_expanded)
+#print(data)
+    ax = plt.subplot()
+    ax.plot(data['rho'][1:], data['delm'][1:], 'o', alpha = 1, color = color_dict['red'])
+    ax.set_xlabel("Separation [arcsec]")
+    ax.set_ylabel("Delta mag")
+    ax.set_ylim(10, -0.5)
+    ax.set_xlim(-0.04, 1.2)
+
+
+if __name__=="__main__":
+    
+    all_names = at.read(binary_location_expanded)
+    binary_detections(all_names['ID'])
+
+

@@ -25,9 +25,8 @@ binary_location_expanded = os.path.join(os.path.expanduser(f"~/{binary_location}
 data = at.read(binary_location_expanded)
 #print(data)
 ax = plt.subplot()
-ax.plot(data['rho'], data['delm'], alpha = 0.5, color = color_dict['red'])
+ax.plot(data['rho'][1:], data['delm'][1:], 'o', alpha = 1, color = color_dict['red'])
 ax.set_xlabel("Separation [arcsec]")
 ax.set_ylabel("Delta mag")
 ax.set_ylim(10, -0.5)
 ax.set_xlim(0, 1.2)
- 

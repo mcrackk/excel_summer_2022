@@ -20,7 +20,6 @@ star_name = "IC2602b104422-6415"
 #multiply separation column by 1000 cuz milliarcseconds 
 
 
-        
 def one_star_table(star_name):
     location =  "Google Drive/Shared drives/DouglasGroup/data/Zorro_data_reformatted/"
     location_and_name = os.path.join(os.path.expanduser(f"~/{location}"), star_name)
@@ -35,7 +34,9 @@ def one_star_table(star_name):
             print(data_table)
             MOLUSC_fname = edited_fname.replace(".dat", "MOLUSC.dat")
             new_pathname = MOLUSC_fname.replace('Zorro_data_reformatted', 'Zorro_to_MOLUSC')
-            at.write(data_table, new_pathname, overwrite = True)
+            at.write(data_table, new_pathname, overwrite = True)        
+
+   
                 
 
 star_names = at.read("all_zorro_targets.csv")
