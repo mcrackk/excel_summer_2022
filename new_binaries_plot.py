@@ -30,3 +30,4 @@ ax.set_xlabel("Separation [arcsec]")
 ax.set_ylabel("Delta mag")
 ax.set_ylim(10, -0.5)
 ax.set_xlim(0, 1.2)
+ 

@@ -23,7 +23,7 @@ unique_names = np.unique(name_list)
 print(unique_names)
 
 out_names = {"name": unique_names}
-at.write(out_names, "all_zorro_targets.csv", delimiter = ",")
+at.write(out_names, "all_zorro_targets.csv", delimiter = ",", overwrite=True)
 
 
     

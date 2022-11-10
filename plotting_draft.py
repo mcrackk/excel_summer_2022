@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 import astropy.io.ascii as at
 
 
-color_dict = {'562': '#984ea3', '832': '#e41a1c', '466': '#999999', '716': '#f781bf'}
+color_dict = {'562': '#984ea3', '832': '#e41a1c', '466': '#999999', '716': '#f781bf', 'halpha': '#984ea3'}
 def starplot(star_name, ax):
     location =  "Google Drive/Shared drives/DouglasGroup/data/Zorro_data_reformatted/"
     location_and_name = os.path.join(os.path.expanduser(f"~/{location}"), star_name)

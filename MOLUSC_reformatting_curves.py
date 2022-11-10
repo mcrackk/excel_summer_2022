@@ -15,7 +15,7 @@ import glob
 
     
     
-star_name = "IC2602b104422-6415" 
+star_name = "IC2602b102445-6501" 
 
 #multiply separation column by 1000 cuz milliarcseconds 
 
@@ -37,7 +37,7 @@ def one_star_table(star_name):
             at.write(data_table, new_pathname, overwrite = True)        
 
    
-                
+    #nerf bluer filters 
 
 star_names = at.read("all_zorro_targets.csv")
 
