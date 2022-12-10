@@ -46,3 +46,6 @@ def one_star(star_name):
     ax.legend()    
 
 one_star("IC2602b104256-6355")
+
+
+
