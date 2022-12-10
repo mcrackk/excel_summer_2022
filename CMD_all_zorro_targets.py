@@ -41,7 +41,7 @@ def plot_one_cluster(cluster_name, ax):
     #print(obs)
    
     ax.plot(data_table['GAIAEDR3_BP'][obs]-data_table['GAIAEDR3_RP'][obs], abs_g[obs],
-            '^', alpha=1, markersize=7, label="Cluster Data", color = color_dict['obs'])
+            '^', alpha=1, markersize=7, label="Cluster Data", color = color_dict['obs'], zorder=2.5)
     
      
 
@@ -54,11 +54,8 @@ def all_cluster_CMD():
     ax.set_ylim(14, -2)
     ax.set_title("Absolute G Magnitude vs. Bp-Rp")
     ax.grid(axis='both')
-    member_ID = ['All Members', 'With Speckle Data']
-    # make a legend, with grey point for all members and red observed ones
-    #look into 'zorder'
-    # make color of obs darker and make all of the symbols bigger 
-    # change obs symbol to another shape 
+    member_ID = ['All Members', 'With Speckle Data'] #starting to make legend 
+    # make a legend, with grey point for all members and red observed ones 
     # change grey point label to 'all members' 
     # obs points label to 'w/ speckle data'
     
