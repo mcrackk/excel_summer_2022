@@ -23,7 +23,7 @@ import glob
 color_dict = {'group' : '#999999', 'obs': '#e41a1c'}
 
 def plot_one_cluster(cluster_name, ax):
-    data_location = "Google Drive/Shared drives/DouglasGroup/data/Zorro_speckle_info/" #all_IC_2602_forKira.csv
+    data_location = "Google Drive/Shared drives/DouglasGroup/data/Zorro_speckle_info/" 
     data_location_expand = os.path.join(os.path.expanduser(f"~/{data_location}"))
     cluster_file = f"all_{cluster_name}_forKira.csv"
     fname = os.path.join(f"{data_location_expand}", f"{cluster_file}")
@@ -35,34 +35,39 @@ def plot_one_cluster(cluster_name, ax):
     dmod = 5-5*np.log10(data_table["dist"])
     abs_g = data_table['GAIAEDR3_G'] + dmod
     ax.plot(data_table['GAIAEDR3_BP']-data_table['GAIAEDR3_RP'], abs_g,
-        'o', alpha=0.1, markersize=7, label="Zorro Data", color = color_dict['group'])
+        'o', alpha=0.1, markersize=7, color = color_dict['group'])
     
     obs = data_table['gemini_obs']=="True"
-    #print(obs)
+    
    
     ax.plot(data_table['GAIAEDR3_BP'][obs]-data_table['GAIAEDR3_RP'][obs], abs_g[obs],
-            '^', alpha=1, markersize=7, label="Cluster Data", color = color_dict['obs'], zorder=2.5)
+            '^', alpha=1, markersize=7,color = color_dict['obs'], zorder=2.5)
     
      
 
 
 def all_cluster_CMD():
+    
     ax = plt.subplot()
     ax.set_xlabel("Bp-Rp")
     ax.set_ylabel("Absolute G Mag")
     ax.set_xlim(-0.5, 4.5)
     ax.set_ylim(14, -2)
-    ax.set_title("Absolute G Magnitude vs. Bp-Rp")
+    #ax.set_title("Absolute G Magnitude vs. Bp-Rp")
     ax.grid(axis='both')
-    member_ID = ['All Members', 'With Speckle Data'] #starting to make legend 
-    # make a legend, with grey point for all members and red observed ones 
-    # change grey point label to 'all members' 
-    # obs points label to 'w/ speckle data'
     
-    for cluster_name in ["IC_2602", "IC_2391", "Collinder_135"]:
-        plot_one_cluster(cluster_name, ax)
+    
+    ax.plot([], [], '^', label='With Speckle Data', color=color_dict['obs'])
+    ax.plot([], [], 'o', label='All Members', color=color_dict['group'])
+       
+        
     ax.legend()
-
+    
+    cluster_list = ["IC_2602", "IC_2391", "Collinder_135", "NGC_2547", "NGC_2451A"]
+    for cluster_name in cluster_list: 
+        plot_one_cluster(cluster_name, ax)
+        
+    
 
 if __name__== "__main__":
    
